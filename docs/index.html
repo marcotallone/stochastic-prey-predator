@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="en">
+
+<!-- Installation remarks:
+- copy everything in the docs/ folder of the repository 
+- run `npm install` to install the dependencies
+- run `npm run build -- css-themes` for the personal theme
+-->
+
+<!-- Head -->
+<head>
+
+    <!-- Metadata -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+            content="
+            width=device-width, 
+            initial-scale=1.0, 
+            maximum-scale=1.0, 
+            user-scalable=no
+            "
+    >
+    <title>Stochastic Prey-Predator</title>
+    <meta name="description" content="Stohcastic Prey-Predator Model">
+    <meta name="author" content="Marco Tallone">
+
+    <!-- Style Settings -->
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/personal.css" id="theme">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/nnfx-light.css">
+
+    <!-- Personal CSS Styling -->
+    <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<!-- Body -->
+<body>
+
+<!-- Start of the slides -->
+<div class="reveal">
+<div class="slides">
+
+<!----------------------------------------------------------------------------->
+
+<!-- Title Slide -->
+<section 
+    data-transition="slide"
+    data-background-transition="slide"
+    data-state="hide-menubar hide-menu"
+    data-background-gradient="linear-gradient(to right, #D1D1D1, #F7F7F7, #EBEBEB, #E6E6E6, #D1D1D1)"
+>
+
+    <!-- Main Title -->
+    <div class="main-title-body" data-id="title-container">
+        <h1>Dynamics of a stochastic predator-prey model<br> with fear
+effect and hunting cooperation</h1>
+
+        <!-- Paper citation -->
+        <div class="multicolumn" 
+        style="
+            width: 38%;
+            background: rgba(255, 255, 255, 0.27);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(9.7px);
+            -webkit-backdrop-filter: blur(9.7px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        ">
+        <div style="flex: 1; align-items: right; text-align: right; margin-right: 20px;">
+            <a href="https://link.springer.com/article/10.1007/s12190-022-01746-7?fromPaywallRec=false" target="_blank">
+                <img src="./images/paper-icon.svg" height="100px" style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);">
+            </a>
+        </div>
+        <div style="flex: 4;">
+            <p style="font-size: 0.5em; text-align: left;">
+                H. Qi and X. Meng,<br>
+                <i><b>Dynamics of a stochastic predator-prey model</b></i>,<br>
+                <i><b>with fear effect and hunting cooperation</b></i>,<br>
+                in Journal of Applied Mathematics and Computing, vol. 69, 2023
+            </p>
+        </div>
+        </div>
+
+        <!-- Subtitle -->
+        <p style="font-size: 0.8em;">
+            Exam Presentation<br> 
+            Stochastic Modelling and Simulation Course<br>
+            SDIC Master Degree, University of Trieste (UniTS)
+        </p>
+
+        <!-- Author and Date -->
+        <p style="font-size: 0.8em;">
+            Marco Tallone<br>
+            September 2025
+        </p>
+
+        <!-- Logos -->
+        <div class="main-title-logos">
+            <div class="main-title-logo-item">
+                <img src="./images/sdic-logo.png" height="200px" />
+            </div>
+            <div class="main-title-logo-item">
+                <img src="./images/units-blue.png" height="200px" />
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!----------------------------------------------------------------------------->
+
+<!-- ToC -->
+<section 
+    data-transition="slide"
+    data-background-transition="slide"
+    data-state="hide-menubar hide-menu"
+    data-background-gradient="linear-gradient(to right, #D1D1D1, #F7F7F7, var(--background))"
+>
+
+
+    <div class="slide-body">
+
+        <h1 style="margin-bottom: 40px;">Table of Contents</h1>
+
+        <!-- <ol class ="list" style="font-weight: bold; font-size: 1.0em; margin-bottom: 30px;">
+            <li>MULTI-OBJECTIVE OPTIMIZATION IN PINNs</li>
+            <li>CASE STUDY EXAMPLES</li>
+            <li>EFFECT OF PARAMETERS ON LOSS RESIDUALS</li>
+            <li>OPTIMAL CHOICE OF LOSS WEIGHTS</li>
+        </ol>
+
+        <div class="cbox" style="background-color: #f1f1f1;">
+            <p style="text-align: center; font-size: 1.1em; width: 100%;">
+                <b style="color: var(--primary)">OBJECTIVE</b>
+            </p>
+            <p style="text-align: center; font-style: italic; font-size: 0.9em; width: 100%;">
+                Understand how parameters of the physical system and coefficients of differential equations affect the multi-objective optimization problem and the optimal choice of loss weights in PINNs
+            </p>
+        </div> -->
+
+        <div class="multicolumn">
+
+            <div class="cbox"
+                 style="margin: 0px 15px 0px 15px; padding: 30px; font-size: 0.7em;">
+                <b style="font-size: 1.3em">1. Model Description</b><br>
+                <ul class="spaced-sublist" style="padding-left: 40px;">
+                    <li>Variables and Parameters</li>
+                    <li>Deterministic model</li>
+                    <li>Stochastic Model</li>
+                </ul>
+            </div>
+
+            <div class="cbox"
+                 style="margin: 0px 15px 0px 15px; padding: 30px; font-size: 0.7em;">
+                <b style="font-size: 1.3em">2. Simulation methods</b><br>
+                <ul class="spaced-sublist" style="padding-left: 40px;">
+                    <li>Euler-Maruyama</li>
+                    <li>Milstein</li>
+                    <li>Runge-Kutta</li>
+                </ul>
+            </div>
+
+            <div class="cbox"
+                 style="margin: 0px 15px 0px 15px; padding: 30px; font-size: 0.7em;">
+                <b style="font-size: 1.3em">3. Results and<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Model Behavior</b><br>
+                <ul class="spaced-sublist" style="padding-left: 40px;">
+                    <li>Asymptotic behavior</li>
+                    <li>Equilibrium points</li>
+                    <li>Noise-induced effects</li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!----------------------------------------------------------------------------->
+
+<section data-name="1. MODEL DESCRIPTION">
+
+    <section>
+    <div class="section-title-body">
+        <h1 style="font-size: 2em;">Model Description</h1>
+    </div>
+    </section>
+
+    <section data-transition="slide">
+       <h1 class="slide-title">Deterministic Model</h1> 
+
+        <div class="slide-body">
+
+            <p>A prey-predator model with fear effect and hunting cooperation is proposed:</p>
+
+            <div class="cbox">
+            \[
+            \begin{cases}
+                \frac{du}{dt} = \frac{r_0 u}{1 + k \alpha v} - \beta u^2 - \frac{(p + \alpha v) u v}{1 + h (p + \alpha v) u}\\
+                \frac{dv}{dt} = \frac{\theta (p + \alpha v) u v}{1 + h (p + \alpha v) u} - m v
+            \end{cases}
+            \tag{1}
+            \]
+            </div>
+
+            <p>
+                with <b>$u(t)$ being the prey population density</b> and <b>$v(t)$ the predator population density</b>
+            <p>
+            <p>
+                The state space is therefore define as: $\quad \mathcal{S} = \{x = (u, v) \in \mathbb{R}^2 | u(t) \geq 0 \land v(t) \geq 0, \forall t \geq 0\}$
+            </p>
+
+        </div>
+    </section>
+
+    <section data-transition="slide">
+       <h1 class="slide-title">Parameters of the model</h1> 
+
+        <div class="slide-body">
+
+            <p>Specifically, the parameters of the model are the following:</p>
+
+            <div style="margin: 0px 5px 0px 5px;">
+            <table class="latex-table2">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>$r_0$</td>
+                        <td>Prey birth rate</td>
+                    </tr>
+                    <tr>
+                        <td>$\alpha$</td>
+                        <td>Predator hunting cooperation rate</td>
+                    </tr>
+                    <tr>
+                        <td>$\beta$</td>
+                        <td>Competition strenght betwen preys</td>
+                    </tr>
+                    <tr>
+                        <td>$\theta$</td>
+                        <td>Conversion efficiency</td>
+                    </tr>
+                    <tr>
+                        <td>$k$</td>
+                        <td>Fear level induced by predator</td>
+                    </tr>
+                    <tr>
+                        <td>$h$</td>
+                        <td>Predator handling time of prey</td>
+                    </tr>
+                    <tr>
+                        <td>$m$</td>
+                        <td>Predator death rate</td>
+                    </tr>
+                    <tr>
+                        <td>$p$</td>
+                        <td>Predator attack rate</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+
+        </div>
+    </section>
+
+    <section data-transition="slide">
+       <h1 class="slide-title">Stochastic Model</h1> 
+
+        <div class="slide-body">
+
+            <p>
+                Populations subject to environmental disturbances $\Rightarrow$ noise indispensable modelling factor<br>
+                Hence, a <b>stochastic prey-predator model with fear effect and hunting cooperation factor</b> is proposed:
+            </p>
+
+            <div class="cbox">
+            \[
+            \begin{cases}
+                \frac{du}{dt} = \left[\frac{r_0 u}{1 + k \alpha v} - \beta u^2 - \frac{(p + \alpha v) u v}{1 + h (p + \alpha v) u}\right]dt + u(\sigma_{11} + \sigma_{12} u) dW_1(t)\\
+                \frac{dv}{dt} = \left[\frac{\theta (p + \alpha v) u v}{1 + h (p + \alpha v) u} - m v\right]dt + v(\sigma_{21} + \sigma_{22} v) dW_2(t)
+            \end{cases}
+            \tag{2}
+            \]
+            </div>
+
+            <p>
+                where $\sigma_{ij} > 0$ are the intensity weights of the white noise and $dW_1(t), dW_2(t)$ are mutually independent standard Brownian motions.
+            </p>
+
+        </div>
+    </section>
+
+    <section data-transition="slide">
+       <h1 class="slide-title">Drift and diffusion functions</h1> 
+
+        <div class="slide-body">
+
+            <p style="text-align:left">
+                We shall also formalize the vectorial <b>drift function</b> $f: \mathbb{R}^2 \to \mathbb{R}^2$ and<br> <b>diffusion function</b> $g: \mathbb{R}^2 \to \mathbb{R}^2$ associated with the stochastic model:
+            </p>
+            \[
+            f(u, v) = \begin{bmatrix}
+                \frac{r_0 u}{1 + k \alpha v} - \beta u^2 - \frac{(p + \alpha v) u v}{1 + h (p + \alpha v) u}\\
+                \frac{\theta (p + \alpha v) u v}{1 + h (p + \alpha v) u} - m v
+            \end{bmatrix}
+
+            \quad\text{and}\quad
+
+            g(u, v) = \begin{bmatrix}
+                u(\sigma_{11} + \sigma_{12} u)\\
+                v(\sigma_{21} + \sigma_{22} v)
+            \end{bmatrix}
+            \]
+            <p style="text-align:left">
+                as well as the first derivatives of the components of the latter as:
+            </p>
+            \[
+                g'(u, v) = \begin{bmatrix}
+                    \frac{dg_u(u,v)}{du}\\
+                    \frac{dg_v(u,v)}{dv}\\
+                \end{bmatrix} 
+                = \begin{bmatrix}
+                    \sigma_{11} + 2 \sigma_{12} u\\
+                    \sigma_{21} + 2 \sigma_{22} v
+                \end{bmatrix}
+            \]
+
+        </div>
+    </section>
+
+</section>
+
+<!----------------------------------------------------------------------------->
+
+<section data-name="2. SIMULATION METHODS">
+
+    <section>
+    <div class="section-title-body">
+        <h1 style="font-size: 2em;">Numerical Simulation Methods</h1>
+    </div>
+    </section>
+
+    <section data-transition="slide">
+       <h1 class="slide-title">Numerical Simulation Methods</h1> 
+
+        <div class="slide-body">
+
+           <p>
+            $3$ numerical simulation methods have been implemented to simulate the stochastic model:
+           </p> 
+
+            <div class="multicolumn">
+
+                <div class="cbox" style="margin: 0px 15px 0px 15px; padding: 30px; text-align: center;">
+                    <b>Euler-Maruyama Algorithm</b>
+                </div>
+
+                <div class="cbox" style="margin: 0px 15px 0px 15px; padding: 30px; text-align: center;">
+                    <b>Milstein Algorithm</b><br>
+                    <span style="text-align: center; color: var(--light)"><i>(used in the paper)</i></span>
+                </div>
+
+                <div class="cbox" style="margin: 0px 15px 0px 15px; padding: 30px; text-align: center;">
+                    <b>Stochastic Runge-Kutta Scheme</b>
+                </div>
+
+            </div>
+
+            <p style="text-align: left;">
+                In all of them, we're approximating the real solution $x(t) = (u(t), v(t))$ on a temporal interval $[0, T]$ by partitioning it in <b>$N$ discrete time-steps</b> and iteratively computing the <b>discretized model</b> solution $x_k = (u_k, v_k)$ using an iterative update rule.
+            </p>
+
+        </div>
+    </section>
+
+    <section data-transition="slide">
+       <h1 class="slide-title">Euler-Maruyama Algorithm</h1> 
+
+        <div class="slide-body">
+
+            <p>The iterative update rule for the <b>Euler-Maruyama Algorithm</b> is:</p>
+            <div class="cbox">
+            \[
+            x_{k+1} = x_k + f(x_k) \Delta t + g(x_k) \sqrt{\Delta t} \xi_k 
+            \]
+            </div>
+            <p>
+                where $\Delta t = T / N$ is the uniform length of the single time-step and<br> 
+                $\xi_k$ for $k = 1, 2, \dots$ are independent Gaussian random variables $\mathcal{N}(0, 1)$.
+            </p>
+
+        </div>
+    </section>
+
+    <section data-transition="slide">
+       <h1 class="slide-title">Milstein Algorithm</h1> 
+
+        <div class="slide-body">
+
+            <p>The iterative update rule for the <b>Milstein Algorithm</b> is:</p>
+            <div class="cbox">
+            \[
+            x_{k+1} = x_k + f(x_k) \Delta t + g(x_k) \sqrt{\Delta t} \xi_k + \frac{1}{2} g(x_k) g'(x_k) (\zeta_k^2 - 1) \Delta t
+            \]
+            </div>
+            <p>
+                where $\Delta t = T / N$ is the uniform length of the single time-step and<br> 
+                $\xi_k, \zeta_k$ for $k = 1, 2, \dots$ are independent Gaussian random variables $\mathcal{N}(0, 1)$.
+            </p>
+
+        </div>
+    </section>
+
+    <section data-transition="slide">
+       <h1 class="slide-title">Stochastic Runge-Kutta Scheme</h1> 
+
+        <div class="slide-body">
+
+            <p>The iterative update rule for the <b>Stochastic Runge-Kutta Scheme</b> is:</p>
+            <div class="cbox" style="width: 85%;">
+            \[
+            x_{k+1} = x_k + f(x_k) \Delta t + g(x_k) \sqrt{\Delta t} \xi_k + \frac{1}{2} \left( g(x_k + f(x_k) \Delta t + g(x_k) \sqrt{\Delta t }) - g(x_k) \right) (\zeta_k^2 - 1) \sqrt{\Delta t}
+            \]
+            </div>
+            <p>
+                where $\Delta t = T / N$ is the uniform length of the single time-step and<br> 
+                $\xi_k$ for $k = 1, 2, \dots$ are independent Gaussian random variables $\mathcal{N}(0, 1)$.
+            </p>
+
+
+        </div>
+    </section>
+
+</section>
+
+<!----------------------------------------------------------------------------->
+
+<section data-name="3. RESULTS & BEHAVIOR">
+
+    <section>
+    <div class="section-title-body">
+        <h1 style="font-size: 2em;">Simulation Results & Model Behavior</h1>
+    </div>
+    </section>
+
+    <section data-transition="slide">
+       <h1 class="slide-title">Title</h1> 
+
+        <div class="slide-body">
+
+            Body here
+
+        </div>
+    </section>
+
+    <section data-transition="slide">
+       <h1 class="slide-title">Title</h1> 
+
+        <div class="slide-body">
+
+            Body here
+
+        </div>
+    </section>
+
+    <section data-transition="slide">
+       <h1 class="slide-title">Title</h1> 
+
+        <div class="slide-body">
+
+            Body here
+
+        </div>
+    </section>
+
+    <section data-transition="slide">
+       <h1 class="slide-title">Title</h1> 
+
+        <div class="slide-body">
+
+            Body here
+
+        </div>
+    </section>
+
+    <section data-transition="slide">
+       <h1 class="slide-title">Title</h1> 
+
+        <div class="slide-body">
+
+            Body here
+
+        </div>
+    </section>
+
+</section>
+
+<!----------------------------------------------------------------------------->
+
+<!-- End of slides -->
+</div>
+</div>
+
+<!-- Plugins and initialization configuration -->
+<script src="dist/reveal.js"></script>
+<script src="plugin/simplemenu/simplemenu.js"></script>
+<script src="plugin/zoom/zoom.js"></script>
+<script src="plugin/notes/notes.js"></script>
+<script src="plugin/highlight/highlight.js"></script>
+<script src="plugin/math/math.js"></script>
+<script>
+    // INFO: More info about initialization & config:
+    // - https://revealjs.com/initialization/
+    // - https://revealjs.com/config/
+    Reveal.initialize({
+        
+        // General configuration settings
+        transition: 'fade',
+        backgroundTransition: 'fade',
+        hideInactiveCursor: true,
+        hideCursorTime: 900,
+        hash: true, // Reload to current slide
+        disableLayout: true, // Enable standard CSS layout behavior
+        highlight: { // Disable automatic code highlighting
+            highlightOnLoad: false,
+        },
+
+        // INFO: Simplemenu Top Bar
+        // https://github.com/Martinomagnifico/reveal.js-simplemenu
+        simplemenu: {
+            inherit: "previous",
+            barhtml: {
+                header: "<div class='menubar'"+ 
+                                "style='"+
+                                "background: linear-gradient(to right, #D1D1D1, #F7F7F7, #EBEBEB, #E6E6E6, #D1D1D1);"+
+                                "color: var(--dark);"+
+                                "font-weight: bold;"+
+                                "box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);"+
+                                "z-index: 9999;"+
+                                "'><ul class='menu'></ul></div>"
+            }
+        },
+
+        // INFO: Learn about plugins: https://revealjs.com/plugins/
+        plugins: [
+            Simplemenu,
+            RevealMath.KaTeX,
+            RevealHighlight,
+            RevealNotes,
+            RevealZoom,
+        ]
+    });
+</script>
+
+</body>
+
+</html>
+
