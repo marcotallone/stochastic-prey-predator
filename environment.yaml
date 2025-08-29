@@ -1,0 +1,17 @@
+name: stochastic
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.12.3
+  - numpy
+  - pandas
+  - matplotlib
+  - seaborn
+  - scikit-learn
+  - pip
+  - pip:
+    - scipy
+    - plotly
+    - tqdm
+    - jupyter
