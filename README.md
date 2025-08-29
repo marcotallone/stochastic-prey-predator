@@ -11,51 +11,25 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/marcotallone/REPOSITORY_NAME">
+  <!-- <a href="https://github.com/marcotallone/stochastic-prey-predator">
     <img src="images/LOGO_IMAGE" alt="Logo" width="150" height="150">
-  </a>
+  </a> -->
 
-<h2 align="center">TITLE</h2>
-<h4 align="center">SUBTITLE1</h4>
-<h4 align="center">SUBTITLE2</h4>
-<h4 align="center">DATE</h4>
+<h2 align="center">Dynamics of a stochastic predator-prey model<br> with fear
+effect and hunting cooperation</h2>
+<h4 align="center">Stochastic Modelling and Simulation Exam</h4>
+<h4 align="center">SDIC Master Degree, University of Trieste (UniTS)</h4>
+<h4 align="center">2024 - 2025</h4>
 
   <p align="center">
-    DESCRIPTION
-    <br />
-    <br />
+    <p><i>Quick Links:</i></p>
     <table>
       <tr>
-        <td><a href="https://marcotallone.github.io/PRESENTATION_LINK/"><strong>Presentation</strong></a></td>
-        <td><a href="https://github.com/marcotallone/REPORT_LINK"><strong>Report</strong></a></td>
-        <td><a href="https://github.com/marcotallone/OTHER_LINK"><strong>Other</strong></a></td>
+        <td><a href="https://marcotallone.github.io/stochastic-prey-predator/"><strong>Presentation</strong></a></td>
+        <td><a href="./notebooks/Stochastic-Prey-Predator.ipynb"><strong>Notebook</strong></a></td>
+        <td><a href="https://link.springer.com/article/10.1007/s12190-022-01746-7?fromPaywallRec=false"><strong>Paper</strong></a></td>
       </tr>
     </table>
-</div>
-
-<!-- TABLE OF CONTENTS -->
-<div align="center">
-  <table>
-      <tr><td style="text-align: left;">
-        <h2>Table of Contents&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
-        <div style="display: inline-block; text-align: left;" align="left">
-          <p>
-            &nbsp;1. <a href="#author-info">Author Info</a><br>
-            &nbsp;2. <a href="#about-the-project">About The Project</a><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <a href="#quick-overview">Quick Overview</a><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <a href="#built-with">Built With</a><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <a href="#project-structure">Project Structure</a><br>
-            &nbsp;3. <a href="#getting-started">Getting Started</a><br>
-            &nbsp;4. <a href="#usage-examples">Usage Examples</a><br>
-            &nbsp;5. <a href="#description">Description</a><br>
-            &nbsp;6. <a href="#contributing">Contributing</a><br>
-            &nbsp;7. <a href="#license">License</a><br>
-            &nbsp;8. <a href="#references">References</a><br>
-            &nbsp;9. <a href="#acknowledgments">Acknowledgments</a><br>
-          </p>
-        </div>
-      </td></tr>
-  </table>
 </div>
 
 <!-- AUTHOR INFO-->
@@ -70,63 +44,20 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-### Quick Overview
+This repository presents a `Python` implementation and numerical simulations study of the work presented by *Haokun Qi and Xinzhu Meng* in [<a href="#ref1">1</a>], based
+on the study of the dynamics of a stochastic predator-prey model with fear
+effect and hunting cooperation.\
+The [notebook](./notebooks/Stochastic-Prey-Predator.ipynb) in the [`notebooks/`](./notebooks/) folder contains a guided presentation and usage example of all the implemented code, with some comments and final observations on the results obtained from simulations. For a fast look at the whole project, you can instead have a look at the available [presentation](https://marcotallone.github.io/stochastic-prey-predator/) linked below.\
+The theoretical background behind this project is introduced in the [original paper](https://link.springer.com/article/10.1007/s12190-022-01746-7?fromPaywallRec=false) also linked below and in the references section.
 
-Overview
+Click on the badges below to access the official paper and the presentation slides:
 
-### Project Structure
+<div align="center">
 
-The project is structured as follows:
+[![Official Paper][paper-shield]][paper-url]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+[![Presentation Slides][presentation-shield]][presentation-url]
 
-```bash
-# TODO: Add project structure
-```
-  
-### Built With
-
-![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
-![Conda](https://img.shields.io/badge/Conda-44A833?style=for-the-badge&logo=anaconda&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- GETTING STARTED -->
-## Getting Started
-
-### Requirements
-
-Requirements
-
-### Installation
-
-Installation
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- USAGE EXAMPLES -->
-## Usage Examples
-
-Example
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- DESCRIPTION -->
-## Description
-
-Description
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-If you have a suggestion that would make this  project better or extend its functionalities and want to share it with me, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement" or "extension".\
-Suggested contribution procedure:
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+</div>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -142,33 +73,31 @@ Distributed under the MIT License. See [`LICENSE`](./LICENSE) for more informati
 
 <a id="ref1"></a>
 [1]
-Author,
-*"Title"*,
-Journal, Volume, 
-Year, 
-OtherStuff, 
-[Link](www.google.com)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-- [Best-README-Template](https://github.com/othneildrew/Best-README-Template?tab=readme-ov-file): for the README template
+Haokun Qi, Xinzhu Meng,\
+*"Dynamics of a stochastic predator-prey model with fear effect and hunting cooperation"*,\
+in Journal of Applied Mathematics and Computing, volume 69, pp. 2077–2103,\
+2023,\
+doi:  [https://doi.org/10.1007/s12190-022-01746-7](https://doi.org/10.1007/s12190-022-01746-7)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[forks-shield]: https://img.shields.io/github/forks/marcotallone/REPOSITORY_NAME.svg?style=for-the-badge
-[forks-url]: https://github.com/marcotallone/REPOSITORY_NAME/network/members
-[stars-shield]: https://img.shields.io/github/stars/marcotallone/REPOSITORY_NAME.svg?style=for-the-badge
-[stars-url]: https://github.com/marcotallone/REPOSITORY_NAME/stargazers
-[issues-shield]: https://img.shields.io/github/issues/marcotallone/REPOSITORY_NAME.svg?style=for-the-badge
-[issues-url]: https://github.com/marcotallone/REPOSITORY_NAME/issues
-[license-shield]: https://img.shields.io/github/license/marcotallone/REPOSITORY_NAME.svg?style=for-the-badge
-[license-url]: https://github.com/marcotallone/REPOSITORY_NAME/blob/master/LICENSE
+[forks-shield]: https://img.shields.io/github/forks/marcotallone/stochastic-prey-predator.svg?style=for-the-badge
+[forks-url]: https://github.com/marcotallone/stochastic-prey-predator/network/members
+[stars-shield]: https://img.shields.io/github/stars/marcotallone/stochastic-prey-predator.svg?style=for-the-badge
+[stars-url]: https://github.com/marcotallone/stochastic-prey-predator/stargazers
+[issues-shield]: https://img.shields.io/github/issues/marcotallone/stochastic-prey-predator.svg?style=for-the-badge
+[issues-url]: https://github.com/marcotallone/stochastic-prey-predator/issues
+[license-shield]: https://img.shields.io/github/license/marcotallone/stochastic-prey-predator.svg?style=for-the-badge
+[license-url]: https://github.com/marcotallone/stochastic-prey-predator/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white&colorB=0077B5
 [linkedin-url]: https://linkedin.com/in/marco-tallone-40312425b
 [gmail-shield]: https://img.shields.io/badge/-Gmail-red?style=for-the-badge&logo=gmail&logoColor=white&colorB=red
 [gmail-url]: mailto:marcotallone85@gmail.com
+
+[paper-shield]: https://img.shields.io/badge/Official%20Paper-00629B?style=for-the-badge&logo=BookStack&logoColor=white
+[paper-url]: https://link.springer.com/article/10.1007/s12190-022-01746-7?fromPaywallRec=false
+
+[presentation-shield]: https://img.shields.io/badge/Presentation-dodgerblue?style=for-the-badge&logo=google-slides&logoColor=white
+[presentation-url]: https://marcotallone.github.io/stochastic-prey-predator/
