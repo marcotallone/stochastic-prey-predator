@@ -441,6 +441,16 @@ effect and hunting cooperation</h1>
         </div>
     </section>
 
+    <section data-transition="slide">
+       <h1 class="slide-title">Comparison between simulation methods</h1> 
+
+        <div class="slide-body">
+
+            <img src="images/algorithms_comparison.png" alt="Algorithms comparison" height="800px">
+
+        </div>
+    </section>
+
 </section>
 
 <!----------------------------------------------------------------------------->
@@ -454,53 +464,423 @@ effect and hunting cooperation</h1>
     </section>
 
     <section data-transition="slide">
-       <h1 class="slide-title">Title</h1> 
+       <h1 class="slide-title">Numerical Simulation Results</h1> 
 
         <div class="slide-body">
 
-            Body here
+            <div class="multicolumn">
+
+                <div style="flex: 0.25;">
+                    <p>
+                        Parameters:<br>
+                        $r_0 = 2.0$<br>
+                        $p = 0.5$<br>
+                        $k = 1.5$<br>
+                        $h = 1.2$<br>
+                        $\beta = 0.5$<br>
+                        $\theta = 0.6$<br>
+                        $\alpha = 0.24$<br>
+                        $m = 0.34$<br>
+                        <br>
+                        Noise intensities:<br>
+                        \[
+                        \sigma = \begin{bmatrix}
+                            10^{-2} & 10^{-2}\\
+                            10^{-2} & 10^{-2}
+                        \end{bmatrix}
+                        \] 
+                    </p>
+                </div>
+
+                <div style="flex: 0.75;">
+                    <img src="images/normal_simulation.png" alt="Normal Simulation" height="750px">
+                </div>
+
+            </div>
+        
+        </div>
+    </section>
+
+    <section data-transition="slide">
+       <h1 class="slide-title">Simulation close to deterministic equilibrium</h1> 
+
+        <div class="slide-body">
+
+            <div class="multicolumn">
+
+                <div style="flex: 0.25;">
+                    <p>
+                        Deterministic equilibrium:<br>
+                        \[
+                            f(u^*, v^*) = (0, 0)
+                        \]
+                        \[
+                            \Downarrow
+                        \]
+                        \[
+                            (u^*, v^*) = (2.3075, 1.1143)
+                        \]
+                    </p>
+                </div>
+
+                <div style="flex: 0.75;">
+                    <img src="images/equilibrium_simulation.png" alt="Equilibrium Simulation" height="750px">
+                </div>
+
+            </div>
+        
+        </div>
+    </section>
+
+    <section data-transition="slide">
+       <h1 class="slide-title">Simulations from random IC</h1> 
+
+        <div class="slide-body">
+
+            <img src="images/multiIC_simulation.png" alt="Multiple IC simulations" height="800px">            
 
         </div>
     </section>
 
     <section data-transition="slide">
-       <h1 class="slide-title">Title</h1> 
+       <h1 class="slide-title">Asymptotic Behavior Theorems</h1> 
 
         <div class="slide-body">
 
-            Body here
+            <p>
+                The paper states two important theorems:
+            </p>
+
+            \[
+            \text{\textbf{THEOREM 3.1}:\quad when } R_1 = r_0 - \frac{1}{2}\sigma_{11}^2 < 0 \Rightarrow \text{prey } u(t) \to 0 \text{ will be extint}
+            \]
+
+            \[
+            \text{\textbf{THEOREM 3.2}:\quad when } R_2 = \frac{\theta}{h} - \left(m + \frac{1}{2}\sigma_{21}^2\right) < 0 \Rightarrow \text{predator } v(t) \to 0 \text{ will be extint}
+            \]
+
+            <p>
+                In the above simulation: $\quad R_1 \approx 2 \quad \text{and} \quad R_2 \approx 0.16 \quad$, indeed both populations survived.
+            </p>
 
         </div>
     </section>
 
     <section data-transition="slide">
-       <h1 class="slide-title">Title</h1> 
+       <h1 class="slide-title">Predator Extinction</h1> 
 
         <div class="slide-body">
 
-            Body here
+            <div class="multicolumn">
+
+                <div style="flex: 0.25;">
+                    <p>
+                        Parameters:<br>
+                        \[
+                        \begin{array}{ll}
+                            r_0 = 2.0 & \beta = 0.5\\
+                            p = 0.5 & \theta = 0.6\\
+                            k = 1.5 & \alpha = 0.24\\
+                            h = 1.2 & m = 0.34
+                        \end{array}
+                        \]
+                        Noise intensities:<br>
+                        \[
+                        \sigma = \begin{bmatrix}
+                            10^{-2} & 10^{-2}\\
+                            \mathbf{0.6} & 10^{-2}
+                        \end{bmatrix}
+                        \]
+                        R-values:<br>
+                        \[
+                        \begin{array}{ll}
+                        R_1 = 2.0 & R_2 = -0.02
+                        \end{array}
+                        \]
+                    </p>
+                </div>
+
+                <div style="flex: 0.75;">
+                    <img src="images/predator_extinction_simulation.png" alt="Predator Extinction Simulation" height="750px">
+                </div>
+
+            </div>
+        
+        </div>
+    </section>
+    
+    <section data-transition="slide">
+       <h1 class="slide-title">Prey Extinction</h1> 
+
+        <div class="slide-body">
+
+            <div class="multicolumn">
+
+                <div style="flex: 0.25;">
+                    <p>
+                        Parameters:<br>
+                        \[
+                        \begin{array}{ll}
+                            r_0 = 0.17 & \beta = 0.5\\
+                            p = 0.5 & \theta = 0.6\\
+                            k = 1.5 & \alpha = 0.24\\
+                            h = 1.2 & m = 0.34
+                        \end{array}
+                        \]
+                        Noise intensities:<br>
+                        \[
+                        \sigma = \begin{bmatrix}
+                            \mathbf{0.6} & 10^{-2}\\
+                            10^{-2} & 10^{-2}
+                        \end{bmatrix}
+                        \] 
+                        R-values:<br>
+                        \[
+                        \begin{array}{ll}
+                        R_1 = -0.01 & R_2 = 0.16
+                        \end{array}
+                        \]
+                    </p>
+                </div>
+
+                <div style="flex: 0.75;">
+                    <img src="images/prey_extinction_simulation.png" alt="Prey Extinction Simulation" height="750px">
+                </div>
+
+            </div>
+        
+        </div>
+    </section>
+
+    <section data-transition="slide">
+       <h1 class="slide-title">Hunting Cooperation $\;\alpha\;$ effect</h1> 
+
+        <div class="slide-body">
+
+            <img src="images/multi_alpha_evolution.png" height="400px" width="70%">
+            <img src="images/multi_alpha_distribution.png" height="420px" width="70%">
 
         </div>
     </section>
 
     <section data-transition="slide">
-       <h1 class="slide-title">Title</h1> 
+       <h1 class="slide-title">Fear factor $\;k\;$ effect</h1> 
 
         <div class="slide-body">
 
-            Body here
+            <img src="images/multi_k_evolution.png" height="400px" width="70%">
+            <img src="images/multi_k_distribution.png" height="420px" width="70%">
 
         </div>
     </section>
 
     <section data-transition="slide">
-       <h1 class="slide-title">Title</h1> 
+       <h1 class="slide-title">Combined $\;\alpha\;$ and $\;k\;$ effect on Prey Population</h1> 
 
         <div class="slide-body">
 
-            Body here
+            <iframe
+                src="images/prey_mean_steady.html"
+                style="
+                    width: 100%;
+                    height:100%;
+                    margin: 0 auto;
+                    border:0;
+                "
+                frameborder="0"
+                scrolling="no"
+            >
+            </iframe>
 
         </div>
+    </section>
+
+    <section data-transition="slide">
+       <h1 class="slide-title">Combined $\;\alpha\;$ and $\;k\;$ effect on Predator Population</h1> 
+
+        <div class="slide-body">
+
+            <iframe
+                src="images/predator_mean_steady.html"
+                style="
+                    width: 100%;
+                    height:100%;
+                    margin: 0 auto;
+                    border:0;
+                "
+                frameborder="0"
+                scrolling="no"
+            >
+            </iframe>
+
+        </div>
+    </section>
+
+    <section data-transition="slide">
+       <h1 class="slide-title">White-Shot Noise Model</h1> 
+
+        <div class="slide-body">
+            <p style="text-align: left;">
+
+            <b>Extension:</b> <b>white shot noise</b> $=$ acts as an impulsive force with a stochastic intensity withing some determined bounds $\Rightarrow$ series of randomly distributed impulses $\sim$ exponential distribution with rate $\lambda$, which amplitude is bounded in a given range.<br>
+            In this case, the model is similarly described by euations $(2)$, with a small difference:
+            </p>
+
+            <div class="cbox">
+            \[
+            \begin{cases}
+                \frac{du}{dt} = \left[\frac{r_0 u}{1 + k \alpha v} - \beta u^2 - \frac{(p + \alpha v) u v}{1 + h (p + \alpha v) u}\right]dt + u(\sigma_{11} + \sigma_{12} u) \sum_i \xi_i \delta(t - t_i)\\
+                \frac{dv}{dt} = \left[\frac{\theta (p + \alpha v) u v}{1 + h (p + \alpha v) u} - m v\right]dt + v(\sigma_{21} + \sigma_{22} v) \sum_i \zeta_i \delta(t - t_i)
+            \end{cases}
+            \tag{3}
+            \]
+            </div>
+
+            <p style="text-align: left;">
+                where $\delta(t-t_i)$ is the Dirac delta function indicating the presence of an impulsive event at time $t_i$ and $\xi_i, \zeta_i$ are the random amplitudes of the impulses uniformly sampled within a given range.
+            </p>
+
+        </div>
+    </section>
+
+    <section data-transition="slide">
+       <h1 class="slide-title">Simulation White-Shot Noise</h1> 
+
+        <div class="slide-body">
+
+            <div class="multicolumn">
+
+                <div style="flex: 0.25;">
+                    <p>
+                        Parameters:<br>
+                        \[
+                        \begin{array}{ll}
+                            r_0 = 2.0 & \beta = 0.5\\
+                            p = 0.5 & \theta = 0.6\\
+                            k = 1.5 & \alpha = 0.24\\
+                            h = 1.2 & m = 0.34
+                        \end{array}
+                        \]
+                        Noise intensities:<br>
+                        \[
+                        \sigma = \begin{bmatrix}
+                            10^{-2} & 10^{-2}\\
+                            10^{-2} & 10^{-2}
+                        \end{bmatrix}
+                        \]
+                        White-Shot:<br>
+                        \[
+                        \begin{array}{ll}
+                        \lambda = 2.0 & \text{range: } (-1.5, 1.5)
+                        \end{array}
+                        \]
+                    </p>
+                </div>
+
+                <div style="flex: 0.75;">
+                    <img src="images/normal_white_shot.png" height="750px">
+                </div>
+
+            </div>
+        
+        </div>
+    </section>
+
+    <section data-transition="slide">
+       <h1 class="slide-title">White-Shot Noise Predator extinction</h1> 
+
+        <div class="slide-body">
+
+            <div class="multicolumn">
+
+                <div style="flex: 0.25;">
+                    <p>
+                        Parameters:<br>
+                        \[
+                        \begin{array}{ll}
+                            r_0 = 2.0 & \beta = 0.5\\
+                            p = 0.5 & \theta = 0.6\\
+                            k = 1.5 & \alpha = 0.24\\
+                            h = 1.2 & m = 0.34
+                        \end{array}
+                        \]
+                        Noise intensities:<br>
+                        \[
+                        \sigma = \begin{bmatrix}
+                            10^{-2} & 10^{-2}\\
+                            \mathbf{0.6} & 10^{-2}
+                        \end{bmatrix}
+                        \]
+                        White-Shot:<br>
+                        \[
+                        \begin{array}{ll}
+                        \lambda = 2.0 & \text{range: } (-1.5, 1.5)
+                        \end{array}
+                        \]
+                    </p>
+                </div>
+
+                <div style="flex: 0.75;">
+                    <img src="images/extinction_white_shot.png" height="750px">
+                </div>
+
+            </div>
+        
+        </div>
+    </section>
+
+    <section data-transition="slide">
+       <h1 class="slide-title">White-Shot Noise Predator Repopulation Attempt</h1> 
+
+        <div class="slide-body">
+
+            <div class="multicolumn">
+
+                <div style="flex: 0.25;">
+                    <p>
+                        Parameters:<br>
+                        \[
+                        \begin{array}{ll}
+                            r_0 = 2.0 & \beta = 0.5\\
+                            p = 0.5 & \theta = 0.6\\
+                            k = 1.5 & \alpha = 0.24\\
+                            h = 1.2 & m = 0.34
+                        \end{array}
+                        \]
+                        Noise intensities:<br>
+                        \[
+                        \sigma = \begin{bmatrix}
+                            10^{-2} & 10^{-2}\\
+                            \mathbf{0.6} & 10^{-2}
+                        \end{bmatrix}
+                        \]
+                        White-Shot:<br>
+                        \[
+                        \begin{array}{ll}
+                        \lambda = 1.25 & \text{range: } (\mathbf{0}, 0.5)
+                        \end{array}
+                        \]
+                    </p>
+                </div>
+
+                <div style="flex: 0.75;">
+                    <img src="images/extinction_white_shot_positive.png" height="750px">
+                </div>
+
+            </div>
+        
+        </div>
+    </section>
+
+    <section 
+        data-transition="slide"
+        data-background-transition="fade"
+        data-state="hide-menubar hide-menu"
+        data-background="var(--primary)"
+    >
+    <div class="section-title-body">
+        <h1 style="font-size: 2em;">Thank you for your attention!</h1>
+    </div>
     </section>
 
 </section>
