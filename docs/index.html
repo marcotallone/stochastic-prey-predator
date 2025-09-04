@@ -196,7 +196,218 @@ effect and hunting cooperation</h1>
 
         <div class="slide-body">
 
-            <p>A prey-predator model with fear effect and hunting cooperation is proposed:</p>
+            <div class="multicolumn">
+                
+                <div style="flex: 0.7;">
+                    <p style="text-align: left;">
+                        To understand the deterministic model, let's start from a classic Lotka-Volterra model:
+                    </p>
+
+                    <div class="cbox">
+                    \[
+                    \begin{cases}
+                        \frac{du}{dt} = r_0 u - a u v\\
+                        \frac{dv}{dt} = a u v - m v\
+                    \end{cases}
+                    \]
+                    </div>
+
+                    <p style="text-align: left;">
+                        with:<br>
+                        - <b>$u(t)$ prey population density</b><br>
+                        - <b>$v(t)$ predator population density</b><br>
+                        - $r_0$ prey birth rate<br>
+                        - $a$ predator attack rate<br>
+                        - $m$ predator death rate<br>
+                    <p>
+                </div>
+                <div style="flex: 0.3; text-align: center;">
+                    <img src="images/Th1.png" height="700px">
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section data-transition="slide">
+       <h1 class="slide-title">Deterministic Model</h1> 
+
+        <div class="slide-body">
+
+            <div class="multicolumn">
+                
+                <div style="flex: 0.7;">
+                    <p style="text-align: left;">
+                        As prey density $u$ rises, individuals compete for limited food/space,
+                        thus we add an intraspecific competition term introducing
+                        a prey competition strength parameter $\beta$:
+                    </p>
+
+                    <div class="cbox">
+                    \[
+                    \begin{cases}
+                        \frac{du}{dt} = r_0 u - \beta u^2 - a u v\\
+                        \frac{dv}{dt} = a u v - m v\
+                    \end{cases}
+                    \]
+                    </div>
+                </div>
+                <div style="flex: 0.3; text-align: center;">
+                    <img src="images/Th2.png" height="700px">
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section data-transition="slide">
+       <h1 class="slide-title">Deterministic Model</h1> 
+
+        <div class="slide-body">
+
+            <div class="multicolumn">
+                
+                <div style="flex: 0.7;">
+                    <p style="text-align: left;">
+                        Predators need time to chase, hunt and eat preys.
+                        The number of preys per unit time a predator can hunt ($h$)
+                        is <b>limited</b> and described by a <b>Holling type II functional response</b>:
+                        \[
+                            \text{Holling II:}\quad \frac{a u}{1 + hau}
+                        \]
+                        thus the model becomes:
+                    </p>
+
+                    <div class="cbox">
+                    \[
+                    \begin{cases}
+                        \frac{du}{dt} = r_0 u - \beta u^2 - \frac{a u v}{1 + hau}\\
+                        \frac{dv}{dt} =  \frac{a u v}{1 + hau} - m v\
+                    \end{cases}
+                    \]
+                    </div>
+                </div>
+                <div style="flex: 0.3; text-align: center;">
+                    <img src="images/Th3.png" height="700px">
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section data-transition="slide">
+       <h1 class="slide-title">Deterministic Model</h1> 
+
+        <div class="slide-body">
+
+            <div class="multicolumn">
+                
+                <div style="flex: 0.7;">
+                    <p style="text-align: left;">
+                        In this model, predators can cooperate with rate $\alpha$
+                        to improve their baseline attack rate $p$. Hence the overall attack rate
+                        is not constant:
+                        \[
+                            a(v) = p + \alpha v
+                        \]
+                        which results in:
+                    </p>
+
+                    <div class="cbox">
+                    \[
+                    \begin{cases}
+                        \frac{du}{dt} = r_0 u \mathbf{- \beta u^2} - \frac{(p + \alpha v) u v}{1 + h (p + \alpha v) u}\\
+                        \frac{dv}{dt} =  \frac{(p + \alpha v) u v}{1 + h (p + \alpha v) u} - m v\
+                    \end{cases}
+                    \]
+                    </div>
+                </div>
+                <div style="flex: 0.3; text-align: center;">
+                    <img src="images/Th4.png" height="700px">
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section data-transition="slide">
+       <h1 class="slide-title">Deterministic Model</h1> 
+
+        <div class="slide-body">
+
+            <div class="multicolumn">
+                
+                <div style="flex: 0.7;">
+                    <p style="text-align: left;">
+                        Moreover, cooperation affect the prey birth rate in the equation.
+                        This is further influenced by the fear $k$ that preys perceive from predators:
+                        \[
+                            r_0 \rightarrow \frac{r_0}{1 + k \alpha v}
+                        \]
+                        Hence:
+                    </p>
+
+                    <div class="cbox">
+                    \[
+                    \begin{cases}
+                        \frac{du}{dt} = \frac{r_0 u}{1 + k \alpha v} - \beta u^2 - \frac{(p + \alpha v) u v}{1 + h (p + \alpha v) u}\\
+                        \frac{dv}{dt} =  \frac{(p + \alpha v) u v}{1 + h (p + \alpha v) u} - m v\
+                    \end{cases}
+                    \]
+                    </div>
+                </div>
+                <div style="flex: 0.3; text-align: center;">
+                    <img src="images/Th5.png" height="700px">
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section data-transition="slide">
+       <h1 class="slide-title">Deterministic Model</h1> 
+
+        <div class="slide-body">
+
+            <div class="multicolumn">
+                
+                <div style="flex: 0.7;">
+                    <p style="text-align: left;">
+                        Finally we introduce a conversion efficiency $\theta$
+                        which models how efficiently the energy from consumed prey is converted into new predator births or growth. 
+                    </p>
+
+                    <div class="cbox">
+                    \[
+                    \begin{cases}
+                        \frac{du}{dt} = \frac{r_0 u}{1 + k \alpha v} - \beta u^2 - \frac{(p + \alpha v) u v}{1 + h (p + \alpha v) u}\\
+                        \frac{dv}{dt} =  \frac{\theta (p + \alpha v) u v}{1 + h (p + \alpha v) u} - m v\
+                    \end{cases}
+                    \]
+                    </div>
+                </div>
+                <div style="flex: 0.3; text-align: center;">
+                    <img src="images/Th6.png" height="700px">
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section data-transition="slide">
+       <h1 class="slide-title">Deterministic Model</h1> 
+
+        <div class="slide-body">
+
+            <p>
+                The end result is a prey-predator model with fear effect and hunting cooperation:
+            </p>
 
             <div class="cbox">
             \[
@@ -209,9 +420,6 @@ effect and hunting cooperation</h1>
             </div>
 
             <p>
-                with <b>$u(t)$ being the prey population density</b> and <b>$v(t)$ the predator population density</b>
-            <p>
-            <p>
                 The state space is therefore define as: $\quad \mathcal{S} = \{x = (u, v) \in \mathbb{R}^2 | u(t) \geq 0 \land v(t) \geq 0, \forall t \geq 0\}$
             </p>
 
@@ -223,7 +431,7 @@ effect and hunting cooperation</h1>
 
         <div class="slide-body">
 
-            <p>Specifically, the parameters of the model are the following:</p>
+            <p>here we summarize the parameters of the model introduce so far:</p>
 
             <div style="margin: 0px 5px 0px 5px;">
             <table class="latex-table2">
@@ -231,40 +439,49 @@ effect and hunting cooperation</h1>
                     <tr>
                         <th>Parameter</th>
                         <th>Description</th>
+                        <th>What it models</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>$r_0$</td>
                         <td>Prey birth rate</td>
+                        <td>Reproduction rate of preys in absence of predators</td>
                     </tr>
                     <tr>
                         <td>$\alpha$</td>
                         <td>Predator hunting cooperation rate</td>
+                        <td>How much predators cooperate to hunt preys</td>
                     </tr>
                     <tr>
                         <td>$\beta$</td>
                         <td>Competition strenght betwen preys</td>
+                        <td>How much preys compete among themselves for limited resources</td>
                     </tr>
                     <tr>
                         <td>$\theta$</td>
-                        <td>Conversion efficiency</td>
+                        <td>Conversion efficiency of the predator</td>
+                        <td>How efficiently the energy from consumed prey is converted into new predator births or growth</td>
                     </tr>
                     <tr>
                         <td>$k$</td>
                         <td>Fear level induced by predator</td>
+                        <td>How much the presence of predators affects the prey birth rate</td>
                     </tr>
                     <tr>
                         <td>$h$</td>
                         <td>Predator handling time of prey</td>
+                        <td>Time needed by a predator to chase, hunt and eat a prey</td>
                     </tr>
                     <tr>
                         <td>$m$</td>
                         <td>Predator death rate</td>
+                        <td>Natural death rate of predators in absence of preys</td>
                     </tr>
                     <tr>
                         <td>$p$</td>
-                        <td>Predator attack rate</td>
+                        <td>Predator baseline attack rate</td>
+                        <td>Attack rate of a non-cooperating predator</td>
                     </tr>
                 </tbody>
             </table>
@@ -606,6 +823,15 @@ effect and hunting cooperation</h1>
 
             </div>
         
+        </div>
+    </section>
+    <section data-transition="slide">
+       <h1 class="slide-title">Predator Extinction</h1>
+
+        <div class="slide-body">
+
+            <img src="images/predator_extinction.gif" alt="Predator Extinction Animation" height="800px">
+
         </div>
     </section>
     
