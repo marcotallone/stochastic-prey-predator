@@ -30,6 +30,8 @@ effect and hunting cooperation</h2>
         <td><a href="https://link.springer.com/article/10.1007/s12190-022-01746-7?fromPaywallRec=false"><strong>Paper</strong></a></td>
       </tr>
     </table>
+    <br>
+    <img src="./docs/images/predator_extinction.gif" alt="Predator Extinction Simulation" width="800">
 </div>
 
 <!-- AUTHOR INFO-->
