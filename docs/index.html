@@ -663,7 +663,20 @@ effect and hunting cooperation</h1>
 
         <div class="slide-body">
 
-            <img src="images/algorithms_comparison.png" alt="Algorithms comparison" height="800px">
+            <img src="images/algorithms_comparison.png" alt="Algorithms comparison" height="750px">
+
+        </div>
+    </section>
+
+    <section data-transition="slide">
+       <h1 class="slide-title">Convergence of simulation methods</h1> 
+
+        <div class="slide-body">
+
+            <p style="margin-bottom: -5px;">
+            $ m_{Euler} \approx 0.6 \quad\quad m_{Milstein} \approx 0.9 \quad\quad m_{SRK} \approx 0.9 $
+            </p>
+            <img src="images/convergence.png" alt="Algorithms convergence" height="800px">
 
         </div>
     </section>
@@ -822,6 +835,26 @@ effect and hunting cooperation</h1>
                 </div>
 
             </div>
+        
+        </div>
+    </section>
+    <section data-transition="slide">
+       <h1 class="slide-title">Predator Extinction</h1> 
+
+        <div class="slide-body">
+
+            <div class="cbox">
+                ⚠️ <b>NOTE!</b><br>
+                Notice that the extinction of the predator $\Rightarrow$ $v(t) \to 0$<br>
+                As a consequence, prey population $u(t)$ grows as a simple <b>linear logistic model</b>:
+                \[
+                    \frac{du}{dt} = r_0 u - \beta u^2 = r_0 u \left(1 - \frac{u}{\frac{r_0}{\beta}}\right)
+                \]
+                with equilibria <span style="color: red;">$u_{eq.} = 0$</span> and <span style="color: var(--secondary);">$u_{eq.} = \frac{r_0}{\beta}$</span>.
+            </div>
+            <p>
+                With previous parameters $r_0 = 2.0$ and $\beta = 0.5 \Rightarrow$ $u(t) \to 4$ as $t \to \infty$.
+            </p>
         
         </div>
     </section>
