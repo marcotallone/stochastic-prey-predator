@@ -781,13 +781,24 @@ effect and hunting cooperation</h1>
                 The paper states two important theorems:
             </p>
 
+            <div class="cbox" style="margin-bottom: 20px;">
+            $\text{\textbf{THEOREM 3.1}}:$ <b>Extinction of the prey population</b>
             \[
-            \text{\textbf{THEOREM 3.1}:\quad when } R_1 = r_0 - \frac{1}{2}\sigma_{11}^2 < 0 \Rightarrow \text{prey } u(t) \to 0 \text{ will be extint}
+            \text{when}  \quad   R_1 = r_0 - \frac{1}{2}\sigma_{11}^2 < 0  \quad  \Rightarrow  \quad\lim_{t \to \infty} u(t) = 0
             \]
+            Hence, prey population $u(t) \to 0$ will be extinct.
+            </div>
 
-            \[
+            <!-- \[
             \text{\textbf{THEOREM 3.2}:\quad when } R_2 = \frac{\theta}{h} - \left(m + \frac{1}{2}\sigma_{21}^2\right) < 0 \Rightarrow \text{predator } v(t) \to 0 \text{ will be extint}
+            \] -->
+            <div class="cbox">
+            $\text{\textbf{THEOREM 3.2}}:$ <b>Extinction of the predator population</b>
+            \[
+            \text{when}  \quad   R_2 = \frac{\theta}{h} - \left(m + \frac{1}{2}\sigma_{21}^2\right) < 0  \quad  \Rightarrow  \quad\lim_{t \to \infty} v(t) = 0
             \]
+            Hence, predator population $v(t) \to 0$ will be extinct.
+            </div>
 
             <p>
                 In the above simulation: $\quad R_1 \approx 2 \quad \text{and} \quad R_2 \approx 0.16 \quad$, indeed both populations survived.
@@ -867,7 +878,6 @@ effect and hunting cooperation</h1>
 
         </div>
     </section>
-    
     <section data-transition="slide">
        <h1 class="slide-title">Prey Extinction</h1> 
 
@@ -911,6 +921,55 @@ effect and hunting cooperation</h1>
         </div>
     </section>
 
+    <section data-transition="slide">
+       <h1 class="slide-title">Steady State PDF in the Predator Extinction Case</h1>
+
+        <div class="slide-body">
+            
+            <p>
+                Notice that as the predator goes extinct $v(t) \to 0$, the evolution of the prey $u(t)$ is approximated by:
+                \[
+                    \frac{du}{dt} = r_0 u - \beta u^2 + u(\sigma_{11} + \sigma_{12} u) dW
+                \]
+            </p>
+            <p>
+                Hence, assuming $\sigma_{12} \ll 1$, it can be demonstrated that:
+            </p>
+            <ul class="spaced-list" style="text-align: left; padding-left: 40px;">
+                <li>
+                    if $\sigma_{11}^2 > 2 r_0$ $\quad \Rightarrow \quad$ steady state $P(u) = \delta(u)$<br>
+                    <span style="color: var(--light)">
+                        (in agreement with <b>THEOREM 3.1</b> since it corresponds to $R_1 < 0$)
+                    </span>
+                </li>
+                <li>
+                    if $\sigma_{11}^2 < r_0$ $\quad \Rightarrow \quad$ steady state $P(u)$ is <b>unimodal</b> around equilibria $u_{eq.} = \frac{r_0}{\beta}$<br>
+                    <span style="color: var(--light)">
+                        (in agreement with the previous simulation)
+                    </span>
+                </li>
+                <li>
+                    if $r_0 < \sigma_{11}^2 < 2 r_0$ $\quad \Rightarrow \quad$ steady state $P(u)$ is <b>monotone decreasing</b><br>
+                    <span style="color: var(--light)">
+                        (not presented in the paper)
+                    </span>
+                </li>
+            </ul>
+
+        </div>
+    </section>
+    <section data-transition="slide">
+       <h1 class="slide-title">Steady State PDF in the Predator Extinction Case</h1>
+
+        <div class="slide-body">
+            <p>
+                Case: $r_0 < \sigma_{11}^2 < 2 r_0$ with $\sigma_{11} = 0.77$ and $r_0 = 0.5$
+            </p>
+            <img src="images/prey_monotone.gif" alt="Predator Extinction Animation 2" height="800px">
+
+        </div>
+    </section>
+    
     <section data-transition="slide">
        <h1 class="slide-title">Hunting Cooperation $\;\alpha\;$ effect</h1> 
 

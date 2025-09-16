@@ -134,7 +134,7 @@ section {
 }
 .spaced-list li {
 	margin-bottom: 10px;
-	font-weight: bold;
+	font-weight: normal;
 }
 .spaced-sublist li {
 	margin-bottom: 10px;
