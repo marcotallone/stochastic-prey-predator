@@ -174,7 +174,7 @@ class Simulator():
         t_event = t_event[t_event < self.T]
 
         # Generate the stochastic impulse values uniformly sampled in [-intensity, +intensity]
-        events: np.ndarray = np.random.uniform(-intensity, +intensity, size = (len(t_event), self.n))
+        events: np.ndarray = np.random.uniform(0, +intensity, size = (len(t_event), self.n))
 
         # Initialize the impulse array
         impulses = np.zeros((len(times), self.n), dtype=float)
